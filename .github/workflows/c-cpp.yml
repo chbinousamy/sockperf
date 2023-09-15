@@ -1,0 +1,21 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "sockperf_v2" ]
+  pull_request:
+    branches: [ "sockperf_v2" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: autogen
+      run: ./autogen
+    - name: configure
+      run: configure
+    - name: make
+      run: make install
